@@ -1,0 +1,18 @@
+Game Tech Ai Demo
+
+Waypoint Pathfinder
+
+For this demo I chose to demonstrate and implement a pathfinding AI within unity for this topic. 
+
+For this project I followed the pathfinding tutorial which can be found on YouTube “AI and Games”. 
+
+https://www.youtube.com/watch?v=rKGq42FMV8c&list=PLokhY9fbx05dodzlBfYsKrUSVk5oVactQ
+
+Firstly, within Unity I started with setting up the environment starting with adding a 2D Plane to give the floor to my environment.  
+Next I added the character, and destination objects within the plane, separating them far enough so that when I added the scripts later, there would be enough distance to show how far the character(NPC) moves. The next step was to create a navigation mesh which will allow an agent to explore that mesh, and for this I changed the object settings to allow for the mesh to be “Walkable” which means that that the floor space will allow for movement. After this I baked the mesh saw it created within the scene. 
+The next step was to add a NavMesh Agent to the character which allows code to be used to allow the character to search around certain waypoints, for which I added a sphere to be used as my destination. The script that I used for this was NPCMove which uses NavMeshAgents within the unity engine AI which finds the navmesh agent, and this script will go onto the destination(sphere) so the character will move towards it. The next part was to create obstacles in which the character would move around and navigate to the destination without colliding with those obstacles. 
+I did this by going into the game object obstacle navigation settings and set the obstacles as a navigation static which separates the mesh into multiple slices and then after this I added a navmesh obstacle which can make the bounds bigger than the object itself, which in turn makes the character take a lopnger route around. 
+Next I implemented patrol waypoints within the scene, I removed the destination sphere as well. 
+In order to create the waypoints, I had to write the script Waypoint.cs, and NPCSimplePatrol.cs which work together, to have enough patrol points so that the character moves to each one in a specific speed and a certain distance, whilst also waiting for a certain time. The next step I did was to create a maze like level in which the character would find a way through the maze.
+The next step that I took was to create patrol points all around the maze so that the character would move around them in an orderly fashion, however some things did not go to plan. I initially wanted the character to follow each path point after another with the slight possibility that there would be a randomized element which would cause the character to go back and forth but unfortunately it would only go to the first and second waypoint and skip all the others. In total there were 15 patrol points in which most didn’t get used or only got used over a longer period of time. 
+I initialled wanted to implement a way in which the controller could move different walls, to give a labyrinth type effect but because the character patrol was unable to follow each point smoothly, I found it difficult to implement what I had wanted to achieve such as making it so walls could be rotated and lifted and flattened, which could make it somewhat different and more enjoyable than what it is currently. I understand that a possible reason for why the character didn’t patrol smoothly and correctly could maybe have something to do with the distance in between where the waypoint is situated and also how close the proximity it is to the wall/other waypoints. That and also with the added randomness that can happen with the character going back and forth proved to be quite difficult for my intentions. 
